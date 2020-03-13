@@ -1,4 +1,11 @@
 ---
-aio_interface: braio
-aio_bridge_ports:
-  - dummy1
+oob_interface: brmgmt
+oob_bridge_ports:
+  - dummy-mgmt
+
+admin_interface: "brmgmt.{{ admin_vlan }}"
+# Route via the seed-hypervisor to the outside world.
+
+provision_oc_interface: brprov
+provision_oc_bridge_ports:
+  - dummy-prov

@@ -10,7 +10,7 @@ internal_interface: "eth1.{{ internal_vlan }}"
 
 storage_interface: "eth1.{{ storage_vlan }}"
 
-tunnel_interface: "eth1.{{ tunnel_vlan }}"
+storage_mgmt_interface: "eth1.{{ storage_mgmt_vlan }}"
 
 ###############################################################################
 # Dummy variable to allow Ansible to accept this file.
