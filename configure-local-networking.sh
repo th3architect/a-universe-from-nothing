@@ -39,15 +39,19 @@ for br in brmgmt brprov brcloud; do
     fi
 done
 
-sudo ip a add $seed_hv_ip/24 dev brprov.100
+if ! sudo ip l show brprov.100 >/dev/null 2>&1; then
+    sudo ip l add link brprov name brprov.100 type vlan id 99
+    sudo ip l set brprov.100 up
+    sudo ip a add $seed_hv_ip/24 dev brprov.100
+fi
 
 # On CentOS 8, bridges without a port are DOWN, which causes network
 # configuration to fail. Add a dummy interface and plug it into the bridge.
 for i in mgmt prov cloud; do
-    if ! sudo ip l show dummy-$$i >/dev/null 2>&1; then
-      sudo ip l add dummy-$$i type dummy
-      sudo ip l set dummy-$$i up
-      sudo ip l set dummy-$$i master br$i
+    if ! sudo ip l show dummy-$i >/dev/null 2>&1; then
+      sudo ip l add dummy-$i type dummy
+      sudo ip l set dummy-$i up
+      sudo ip l set dummy-$i master br$i
     fi
 done
 
