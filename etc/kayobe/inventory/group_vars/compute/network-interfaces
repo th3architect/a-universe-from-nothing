@@ -2,9 +2,9 @@
 ###############################################################################
 # Network interface definitions for the compute group.
 
-admin_interface: "eth0.{{ admin_vlan }}"
+provision_oc_interface: eth0
 # Route via the seed-hypervisor to the outside world.
-admin_gateway: 192.168.34.4
+provision_oc_gateway: 192.168.33.4
 
 internal_interface: "eth1.{{ internal_vlan }}"
 

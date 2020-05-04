@@ -4,11 +4,9 @@
 
 mgmt_interface: eth0
 
-admin_interface: "eth1.{{ admin_vlan }}"
-# Route via the seed-hypervisor to the outside world.
-admin_gateway: 192.168.34.4
-
 provision_oc_interface: eth1
+# Route via the seed-hypervisor to the outside world.
+provision_oc_gateway: 192.168.33.4
 
 ###############################################################################
 # Dummy variable to allow Ansible to accept this file.

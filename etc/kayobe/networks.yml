@@ -8,7 +8,6 @@
 
 # Name of the network used for admin access to the overcloud
 #admin_oc_net_name:
-admin_oc_net_name: admin
 
 # Name of the network used by the seed to manage the bare metal overcloud
 # hosts via their out-of-band management controllers.
@@ -84,20 +83,20 @@ cleaning_net_name: provision_wl
 ###############################################################################
 # Network definitions.
 
-mgmt_cidr: 192.168.33.0/24
+mgmt_cidr: 192.168.35.0/24
 mgmt_mtu: 1450
 # Native VLAN
 mgmt_physical_network: mgmt
 
-admin_cidr: 192.168.34.0/24
-admin_mtu: 1450
-admin_vlan: 100
-admin_physical_network: provision
+#admin_cidr: 192.168.34.0/24
+#admin_mtu: 1450
+#admin_vlan: 100
+#admin_physical_network: provision
 
-provision_oc_cidr: 192.168.35.0/24
+provision_oc_cidr: 192.168.33.0/24
 provision_oc_mtu: 1450
-provision_oc_inspection_allocation_pool_start: 192.168.35.128
-provision_oc_inspection_allocation_pool_end: 192.168.35.254
+provision_oc_inspection_allocation_pool_start: 192.168.33.128
+provision_oc_inspection_allocation_pool_end: 192.168.33.254
 # Native VLAN
 provision_oc_physical_network: provision
 

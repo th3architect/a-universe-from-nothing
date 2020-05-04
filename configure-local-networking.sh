@@ -9,7 +9,7 @@ set -o pipefail
 # These IP addresses map to those statically configured in
 # etc/kayobe/network-allocation.yml and etc/kayobe/networks.yml.
 controller_vip=192.168.39.2
-seed_hv_ip=192.168.34.4
+seed_hv_ip=192.168.33.4
 
 iface=$(ip route | awk '$1 == "default" {print $5; exit}')
 
@@ -36,14 +36,12 @@ for br in brmgmt brprov brcloud; do
     if ! sudo ip l show $br >/dev/null 2>&1; then
       sudo ip l add $br type bridge
       sudo ip l set $br up
+      if [[ $br = brprov ]]; then
+	  sudo ip a add $seed_hv_ip/24 dev $br
+      fi
     fi
 done
 
-if ! sudo ip l show brprov.100 >/dev/null 2>&1; then
-    sudo ip l add link brprov name brprov.100 type vlan id 99
-    sudo ip l set brprov.100 up
-    sudo ip a add $seed_hv_ip/24 dev brprov.100
-fi
 
 # On CentOS 8, bridges without a port are DOWN, which causes network
 # configuration to fail. Add a dummy interface and plug it into the bridge.
