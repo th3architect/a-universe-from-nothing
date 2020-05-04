@@ -2,7 +2,7 @@
 ###############################################################################
 # Network interface definitions for the seed group.
 
-oob_interface: eth0
+mgmt_interface: eth0
 
 admin_interface: "eth1.{{ admin_vlan }}"
 # Route via the seed-hypervisor to the outside world.

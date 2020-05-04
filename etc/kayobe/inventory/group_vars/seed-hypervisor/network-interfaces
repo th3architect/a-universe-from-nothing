@@ -1,6 +1,6 @@
 ---
-oob_interface: brmgmt
-oob_bridge_ports:
+mgmt_interface: brmgmt
+mgmt_bridge_ports:
   - dummy-mgmt
 
 admin_interface: "brmgmt.{{ admin_vlan }}"
